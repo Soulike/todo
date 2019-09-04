@@ -66,7 +66,7 @@ function ListView(props: Props)
                    className={Style.addModal}
                    visible={addModalIsVisible}
                    onOk={onAddModalOk}
-                   onCancel={onAddModalCancel} destroyOnClose={true}>
+                   onCancel={onAddModalCancel} destroyOnClose={true} confirmLoading={loading}>
                 <Input className={Style.titleInput}
                        placeholder={'待办事项标题'} autoFocus={true}
                        value={addModalTitle}

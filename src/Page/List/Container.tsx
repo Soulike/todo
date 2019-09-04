@@ -37,7 +37,7 @@ class List extends Component<Props, State>
             addModalDescription: '',
         };
 
-        this.PAGE_SIZE = 3;
+        this.PAGE_SIZE = 10;
     }
 
     async componentDidMount()
@@ -121,6 +121,7 @@ class List extends Component<Props, State>
 
     onAddModalOk: ModalProps['onOk'] = async () =>
     {
+        this.setState({loading: true});
         const {addModalTitle, addModalDescription} = this.state;
         if (addModalTitle.length === 0)
         {
@@ -145,6 +146,7 @@ class List extends Component<Props, State>
                 await this.loadTodoList();
             }
         }
+        this.setState({loading: false});
     };
 
     onAddModalCancel: ModalProps['onCancel'] = () =>
