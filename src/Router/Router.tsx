@@ -10,7 +10,9 @@ export default () =>
             <Switch>
                 <Redirect path={'/'} to={PAGE_ID_TO_ROUTE[PAGE_ID.LOGIN]} exact={true} />
                 {
-                    Object.values(PAGE_ID).map(pageId => <Route exact={true} path={PAGE_ID_TO_ROUTE[pageId]}
+                    Object.values(PAGE_ID).map(pageId => <Route key={pageId}
+                                                                exact={true}
+                                                                path={PAGE_ID_TO_ROUTE[pageId]}
                                                                 component={PAGE_ID_TO_COMPONENT[pageId]} />)
                 }
                 <Route render={NotFound} />

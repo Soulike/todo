@@ -18,6 +18,6 @@ export class Todo
     static from(obj: any): Partial<Todo>
     {
         const {id, title, done, description, time} = obj;
-        return new Todo(id, title, done, description, time);
+        return new Todo(id, time, done, title, description);
     }
 }

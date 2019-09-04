@@ -1,0 +1,61 @@
+.List {
+    padding: 5vh 5vw;
+    width: 100%;
+    min-height: 100%;
+
+    .listCard {
+        width: 100%;
+        min-height: 100%;
+        box-shadow: 0 0 15px #AAA;
+
+        .loadMore {
+            padding: 0;
+            height: 1em;
+            margin: 0 0.5vw;
+        }
+    }
+
+    .addButton {
+        position: fixed;
+        bottom: 5vh;
+        right: 5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        $SIZE: 75px;
+        width: $SIZE;
+        height: $SIZE;
+        padding: 0;
+        border-radius: $SIZE;
+
+        box-shadow: 0 0 5px #AAA;
+
+        .plusSign {
+            font-size: $SIZE*0.5;
+            transition: 0.5s;
+
+            &:hover {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.addModal {
+    padding: 0 20vw;
+
+    @media all and (max-width: 1000px) {
+        padding: 0 2vw;
+    }
+
+    .titleInput {
+
+    }
+
+    .descriptionTextarea {
+        resize: none;
+        margin-top: 20px;
+        height: 10em;
+    }
+}
