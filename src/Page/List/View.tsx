@@ -6,6 +6,7 @@ import TodoItem from './Component/TodoItem';
 import {NativeButtonProps} from 'antd/lib/button/button';
 import {ModalProps} from 'antd/lib/modal';
 import {InputProps, TextAreaProps} from 'antd/lib/input';
+import ExitButton from './Component/ExitButton';
 
 interface Props
 {
@@ -42,7 +43,12 @@ function ListView(props: Props)
     return (
         <Fragment>
             <main className={Style.List}>
-                <Card className={Style.listCard} title={'待办事项'}>
+                <Card className={Style.listCard} title={
+                    <div className={Style.title}>
+                        <div>待办事项</div>
+                        <ExitButton />
+                    </div>
+                }>
                     <Spin spinning={loading}>
                         <Timeline pending={
                             <Button type={'link'} className={Style.loadMore} onClick={onLoadMoreClick}>
