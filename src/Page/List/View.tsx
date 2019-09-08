@@ -45,7 +45,9 @@ function ListView(props: Props)
                 <Card className={Style.listCard} title={'待办事项'}>
                     <Spin spinning={loading}>
                         <Timeline pending={
-                            <Button type={'link'} className={Style.loadMore} onClick={onLoadMoreClick}>加载更多</Button>
+                            <Button type={'link'} className={Style.loadMore} onClick={onLoadMoreClick}>
+                                <span className={Style.loadMoreText}>加载更多</span>
+                            </Button>
                         }>
                             {
                                 todoList.map(todo =>
