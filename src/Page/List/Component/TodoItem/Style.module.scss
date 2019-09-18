@@ -45,6 +45,16 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @media all and (max-width: 500px) {
+            width: calc(100% - 90px - 2vw);
+        }
+    }
+
+    .time {
+        @media all and (max-width: 500px) {
+            display: none;
+        }
     }
 }
 

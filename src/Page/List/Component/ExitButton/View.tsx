@@ -9,7 +9,7 @@ function ExitButtonView(props: Props)
     return (
         <Button {...props}>
             <Icon type="logout" />
-            退出
+            退出登录
         </Button>
     );
 }
