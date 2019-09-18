@@ -10,7 +10,6 @@ export async function getByPage(pageNumber: number, pageSize: number): Promise<A
         const {data: {isSuccessful, message: msg, data}}: AxiosResponse<Response<Array<Todo>>> = await axios.get(GET_BY_PAGE, {
             params: {
                 json: JSON.stringify({pageNumber, pageSize}),
-                _t: Date.now(),
             },
         });
         if (isSuccessful)

@@ -55,9 +55,7 @@ export async function checkSession(): Promise<{ isInSession: boolean } | null>
 {
     try
     {
-        const {data: {isSuccessful, data}}: AxiosResponse<Response<{ isInSession: boolean }>> = await axios.get(CHECK_SESSION, {
-            params: {_t: Date.now()},
-        });
+        const {data: {isSuccessful, data}}: AxiosResponse<Response<{ isInSession: boolean }>> = await axios.get(CHECK_SESSION);
         if(isSuccessful)
         {
             return data!;
