@@ -40,6 +40,7 @@ class ArticleShower extends PureComponent<Props, State>
         {
             this.setState({wrapper, loading: false});
         }]);*/
+        this.setState({loading: false});
     }
 
     render()
