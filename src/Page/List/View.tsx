@@ -3,7 +3,7 @@ import Style from './Style.module.scss';
 import {Todo} from '../../Class';
 import {Button, Card, Icon, Input, Modal, Spin, Timeline} from 'antd';
 import TodoItem from './Component/TodoItem';
-import {NativeButtonProps} from 'antd/lib/button/button';
+import {ButtonProps, NativeButtonProps} from 'antd/lib/button/button';
 import {ModalProps} from 'antd/lib/modal';
 import {InputProps, TextAreaProps} from 'antd/lib/input';
 import ExitButton from './Component/ExitButton';
@@ -18,6 +18,7 @@ interface Props
     addModalIsVisible: boolean;
     onAddModalOk: ModalProps['onOk'];
     onAddModalCancel: ModalProps['onCancel'];
+    onRefreshButtonClick: ButtonProps['onClick'];
 
     addModalTitle: string;
     addModalDescription: string;
@@ -39,6 +40,7 @@ function ListView(props: Props)
         addModalDescription,
         onAddModalTitleInputChange,
         onAddModalDescriptionTextareaChange,
+        onRefreshButtonClick,
     } = props;
     return (
         <Fragment>
@@ -46,7 +48,13 @@ function ListView(props: Props)
                 <Card className={Style.listCard} title={
                     <div className={Style.title}>
                         <div>待办事项</div>
-                        <ExitButton />
+                        <Button.Group className={Style.buttonWrapper}>
+                            <Button type={'primary'} onClick={onRefreshButtonClick}>
+                                <Icon type="reload" />
+                                刷新
+                            </Button>
+                            <ExitButton type={'danger'} />
+                        </Button.Group>
                     </div>
                 }>
                     <Spin spinning={loading}>

@@ -178,6 +178,7 @@ class List extends Component<Props, State>
             addModalDescription={addModalDescription}
             addModalIsVisible={addModalIsVisible}
             addModalTitle={addModalTitle}
+            onRefreshButtonClick={this.loadTodoList}
             onAddButtonClick={this.onAddButtonClick}
             onAddModalCancel={this.onAddModalCancel}
             onAddModalDescriptionTextareaChange={this.onAddModalDescriptionTextareaChange}
