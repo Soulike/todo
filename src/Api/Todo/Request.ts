@@ -30,7 +30,7 @@ export async function getByPage(pageNumber: number, pageSize: number): Promise<A
     }
 }
 
-export async function add(todo: Todo & { id: never }): Promise<true | null>
+export async function add(todo: Omit<Todo, 'id'>): Promise<true | null>
 {
     try
     {
@@ -78,12 +78,12 @@ export async function deleteById(id: number): Promise<true | null>
     }
 }
 
-export async function modify(id: number, title?: string, description?: string): Promise<true | null>
+export async function modify(todo: Pick<Todo, 'id'> & Partial<Pick<Todo, 'title' | 'description'>>): Promise<true | null>
 {
     try
     {
         const {data: {isSuccessful, message: msg}}: AxiosResponse<Response<void>> =
-            await axios.post(MODIFY, {id, title, description});
+            await axios.post(MODIFY, todo);
         if (isSuccessful)
         {
             return true;

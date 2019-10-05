@@ -3,7 +3,7 @@ import View from './View';
 import {Todo} from '../../../../Class';
 import {ModalProps} from 'antd/lib/modal';
 import {PopconfirmProps} from 'antd/lib/popconfirm';
-import {deleteById, switchState} from '../../../../Api/Todo';
+import {Todo as TodoApi} from '../../../../Api';
 import {notification} from 'antd';
 import emitter from '../../EventEmitter';
 import {ITEM_DELETE, ITEM_DONE, ITEM_UNDONE} from '../../EVENT';
@@ -50,7 +50,7 @@ class TodoItem extends Component<Props, State>
     onDeleteItemConfirm: PopconfirmProps['onConfirm'] = async () =>
     {
         const {todo: {id}} = this.props;
-        const result = await deleteById(id);
+        const result = await TodoApi.deleteById(id);
         if (result !== null)
         {
             emitter.emit(ITEM_DELETE, id);
@@ -62,7 +62,7 @@ class TodoItem extends Component<Props, State>
     {
         const {todo: {id}} = this.props;
         this.setState({loading: true});
-        const result = await switchState(id, true);
+        const result = await TodoApi.switchState(id, true);
         if (result !== null)
         {
             emitter.emit(ITEM_DONE, id);
@@ -74,7 +74,7 @@ class TodoItem extends Component<Props, State>
     {
         const {todo: {id}} = this.props;
         this.setState({loading: true});
-        const result = await switchState(id, false);
+        const result = await TodoApi.switchState(id, false);
         if (result !== null)
         {
             emitter.emit(ITEM_UNDONE, id);

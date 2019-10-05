@@ -4,9 +4,9 @@ export class Todo
     public time: string;
     public done: boolean;
     public title: string;
-    public description?: string | null;
+    public description: string;
 
-    constructor(id: number, time: string, done: boolean, title: string, description?: string)
+    constructor(id: number, time: string, done: boolean, title: string, description: string)
     {
         this.id = id;
         this.title = title;
@@ -15,7 +15,7 @@ export class Todo
         this.time = time;
     }
 
-    static from(obj: any): Partial<Todo>
+    static from(obj: any)
     {
         const {id, title, done, description, time} = obj;
         return new Todo(id, time, done, title, description);

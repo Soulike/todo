@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import LoginView from './View';
 import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../CONFIG/PAGE';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {checkSession, login} from '../../Api';
+import {Account} from '../../Api';
 import {notification} from 'antd';
 import {InputProps} from 'antd/lib/input';
 import {FormProps} from 'antd/lib/form';
@@ -28,7 +28,7 @@ class Login extends PureComponent<Props, State>
 
     async componentDidMount()
     {
-        const res = await checkSession();
+        const res = await Account.checkSession();
         if(res !== null)
         {
             const {isInSession} = res;
@@ -53,7 +53,7 @@ class Login extends PureComponent<Props, State>
     {
         e.preventDefault();
         const {username, password} = this.state;
-        const isSuccessful = await login(username, password);
+        const isSuccessful = await Account.login(username, password);
         if (isSuccessful)
         {
             notification.success({message: '登录成功'});

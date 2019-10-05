@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import View from './View';
 import {Todo} from '../../Class';
-import {add, getByPage} from '../../Api/Todo';
+import {Todo as TodoApi} from '../../Api';
 import {NativeButtonProps} from 'antd/lib/button/button';
 import {message, notification} from 'antd';
 import {ModalProps} from 'antd/lib/modal';
@@ -83,7 +83,7 @@ class List extends Component<Props, State>
     loadTodoList = async () =>
     {
         this.setState({loading: true});
-        const todoList = await getByPage(1, this.PAGE_SIZE);
+        const todoList = await TodoApi.getByPage(1, this.PAGE_SIZE);
         if (todoList !== null)
         {
             this.setState({todoList, loading: false, pageNumber: 1});
@@ -95,7 +95,7 @@ class List extends Component<Props, State>
         this.setState({loading: true});
         const {pageNumber} = this.state;
         const {todoList: currentTodoList} = this.state;
-        const todoList = await getByPage(pageNumber + 1, this.PAGE_SIZE);
+        const todoList = await TodoApi.getByPage(pageNumber + 1, this.PAGE_SIZE);
         if (todoList !== null)
         {
             if (todoList.length !== 0)
@@ -134,7 +134,7 @@ class List extends Component<Props, State>
                     (new Date()).toISOString(), false, addModalTitle, addModalDescription),
                 id: undefined,
             };
-            const result = await add(todo as Todo & { id: never });
+            const result = await TodoApi.add(todo as Todo & { id: never });
             if (result !== null)
             {
                 notification.success({message: '待办事项添加成功'});
